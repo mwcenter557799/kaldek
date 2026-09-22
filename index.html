@@ -151,15 +151,16 @@
         import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
         import { getFirestore, doc, setDoc, getDoc } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
 
-        // Ganti konfigurasi di bawah ini dengan milik Anda dari Firebase Console
+        // Konfigurasi Firebase Anda yang sudah benar
         const firebaseConfig = {
-    apiKey: "AIzaSyAKL...",
-    authDomain: "kalenderpribadi-426e6.firebaseapp.com",
-    projectId: "kalenderpribadi-426e6",
-    storageBucket: "kalenderpribadi-426e6.firebasestorage.app",
-    messagingSenderId: "17087847576",
-    appId: "1:17087847576:web:d86c49de6bbcbed992c4ed"
-};
+            apiKey: "AIzaSyAKl0iBcb-IDfz6IDpmWsbPvIqWW3pYf1g",
+            authDomain: "kalenderpribadi-426e6.firebaseapp.com",
+            projectId: "kalenderpribadi-426e6",
+            storageBucket: "kalenderpribadi-426e6.firebasestorage.app",
+            messagingSenderId: "17087847576",
+            appId: "1:17087847576:web:d86c49de6bbcbed992c4ed",
+            measurementId: "G-R8PVMHFE4B"
+        };
 
         const app = initializeApp(firebaseConfig);
         const auth = getAuth(app);
@@ -196,7 +197,6 @@
                 calendarSection.classList.remove('hidden');
                 userEmailDisplay.textContent = user.email;
                 
-                // Ambil data dari database Firestore berdasarkan UID pengguna
                 await fetchUserData(user.uid);
                 renderCalendar();
             } else {
@@ -308,7 +308,7 @@
             };
             noteModal.style.display = 'none';
             renderCalendar();
-            await saveUserData(); // Simpan otomatis ke Cloud Database
+            await saveUserData();
         });
 
         // Navigasi Bulan
